@@ -8,11 +8,19 @@ import javax.swing.*;
 // This panel represent the animated part of the view with the car images.
 
     public class DrawPanel extends JPanel{
+        private Car T; //
+        void assign(Car T){ //Används i CarController rad 50
+            this.T=T;
+        }
 
-        // Just a single image, TODO: Generalize
-        BufferedImage volvoImage;
-        // To keep track of a singel cars position
+        /*
+        // Just a single image, TODO: Generalize  //not neccersary
+        // To keep track of a singel cars position     //not needed anymore, TA
         Point volvoPoint = new Point();
+         */
+
+
+        BufferedImage Image;
 
         // TODO: Make this genereal for all cars
         void moveit(int x, int y){
@@ -27,18 +35,11 @@ import javax.swing.*;
             this.setBackground(Color.green);
             // Print an error message in case file is not found with a try/catch block
             try {
-                // You can remove the "pics" part if running outside of IntelliJ and
-                // everything is in the same main folder.
-                // volvoImage = ImageIO.read(new File("Volvo240.jpg"));
-
-                // Rememember to rightclick src New -> Package -> name: pics -> MOVE *.jpg to pics.
-                // if you are starting in IntelliJ.
-                volvoImage = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/Volvo240.jpg"));
+                Image = ImageIO.read(DrawPanel.class.getResourceAsStream("pics/" + T.modelName + ".jpg"));
             } catch (IOException ex)
             {
                 ex.printStackTrace();
             }
-
         }
 
         // This method is called each time the panel updates/refreshes/repaints itself
