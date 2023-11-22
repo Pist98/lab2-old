@@ -28,7 +28,7 @@ public class CarView extends JFrame{
     JPanel gasPanel = new JPanel();
     JSpinner gasSpinner = new JSpinner();
     int gasAmount = 0;
-    int breakAmount=0;
+
     JLabel gasLabel = new JLabel("Amount of gas");
 
     JButton gasButton = new JButton("Gas");
@@ -71,11 +71,7 @@ public class CarView extends JFrame{
             }
         });
 
-        gasSpinner.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent e) {
-                breakAmount = (int) ((JSpinner)e.getSource()).getValue();
-            }
-        });
+
 
 
         gasPanel.setLayout(new BorderLayout());
@@ -111,23 +107,14 @@ public class CarView extends JFrame{
         // This actionListener is for the gas button only
         // TODO: Create more for each component as necessary
 
-        brakeButton.addActionListener(new ActionListener(){
-            @Override public void actionPerformed(ActionEvent e) {
-                 carC.brake(breakAmount);
-            }
-        });
+
         gasButton.addActionListener(new ActionListener() { //Anropar gas.Amount
             @Override
             public void actionPerformed(ActionEvent e) {
                 carC.gas(gasAmount);
             }
         });
-        turboOffButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-            carC
-            }
-        });
+
 
 
 

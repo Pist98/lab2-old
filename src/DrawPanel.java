@@ -9,9 +9,6 @@ import javax.swing.*;
 
     public class DrawPanel extends JPanel{
         private Car T; //
-        void assign(Car T){ //Används i CarController rad 50
-            this.T=T;
-        }
 
         /*
         // Just a single image, TODO: Generalize  //not neccersary
@@ -24,8 +21,8 @@ import javax.swing.*;
 
         // TODO: Make this genereal for all cars
         void moveit(int x, int y){
-            volvoPoint.x = x;
-            volvoPoint.y = y;
+            T.x = x;
+            T.y = y;
         }
 
         // Initializes the panel and reads the images
@@ -47,7 +44,7 @@ import javax.swing.*;
         @Override
         protected void paintComponent(Graphics g) {
             super.paintComponent(g);
-            g.drawImage(volvoImage, volvoPoint.x, volvoPoint.y, null); // see javadoc for more info on the parameters
+            g.drawImage(Image, (int)T.x, (int)T.y, null); // see javadoc for more info on the parameters
         }
     }
 
