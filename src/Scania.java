@@ -12,7 +12,6 @@ public class Scania extends Car{
         modelName = "Scania";
         flak=true;
         stopEngine();
-
     }
 
     protected void check_flak() {
