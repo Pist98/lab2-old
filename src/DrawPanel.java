@@ -6,6 +6,8 @@ import java.security.PublicKey;
 import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.util.HashMap;
+import java.util.Map;
 
 // This panel represent the animated part of the view with the car images.
 
