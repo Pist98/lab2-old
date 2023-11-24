@@ -62,7 +62,47 @@ public class CarController {
     void gas(int amount) {
         double gas = ((double) amount) / 100;
         for (Car car : cars) {
-            car.gas(gas);}}
+            car.gas(gas);
+        }
+    }
+
+    void brake(int amount) {
+        double brake = ((double) amount) / 100;
+        for (Car car : cars) {
+            car.brake(brake);}}
 
 
+    void turboOn() {
+        for(Car car: cars) {
+            if (car instanceof Saab95) {
+                ((Saab95) car).setTurboOn();}
+        }
+        }
+
+    void turboOff() {
+        for (Car car : cars) {
+            if(car instanceof Saab95){
+                ((Saab95) car).setTurboOff();}
+        }}
+
+    void lift() {
+        for (Car car : cars) {
+            if(car instanceof Scania){
+                ((Scania) car).raise_flak(5);}
+        }}
+
+    void lower() {
+        for (Car car : cars) {
+            if(car instanceof Scania){
+                ((Scania) car).lower_flak(5);}
+        }}
 }
+
+
+
+
+
+
+
+
+

@@ -9,8 +9,8 @@ public class Car implements Movable  {
     protected Color color;
     protected String modelName;
     protected int direction=90;
-    public double x = 0;
-    public double y = 0;
+    public double x;
+    public double y;
     boolean flak= true;
     protected int last;
     public double getXPos() {
