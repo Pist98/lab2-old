@@ -27,7 +27,8 @@ public class CarView extends JFrame{
 
     JPanel gasPanel = new JPanel();
     JSpinner gasSpinner = new JSpinner();
-    int gasAmount = 0;
+    int gasamount;  // = 0;
+    int brakeamount = gasamount;
 
     JLabel gasLabel = new JLabel("Amount of gas");
 
@@ -37,14 +38,13 @@ public class CarView extends JFrame{
     JButton turboOffButton = new JButton("Saab Turbo off");
     JButton liftBedButton = new JButton("Scania Lift Bed");
     JButton lowerBedButton = new JButton("Lower Lift Bed");
-
     JButton startButton = new JButton("Start all cars");
-    JButton stopButton = new JButton("Stop all cars");
+    JButton stopButton = new JButton("Stop all  cars");
 
     // Constructor
     public CarView(String framename, CarController cc, ArrayList<Car> car){
         this.carC = cc;
-        this.drawPanel = new DrawPanel( X, Y, car);
+        this.drawPanel = new DrawPanel( X, Y-240, car);
         initComponents(framename);
     }
 
@@ -68,7 +68,7 @@ public class CarView extends JFrame{
         gasSpinner = new JSpinner(spinnerModel);
         gasSpinner.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
-                gasAmount = (int) ((JSpinner)e.getSource()).getValue();
+                gasamount = (int) ((JSpinner)e.getSource()).getValue();
             }
         });
 
@@ -111,13 +111,13 @@ public class CarView extends JFrame{
         gasButton.addActionListener(new ActionListener() { //Anropar gas.Amount
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.gas(gasAmount);}});
+                carC.gas(gasamount);}});
 
 
         brakeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.brake(gasAmount);}});//OBS HÄR
+                carC.brake(gasamount);}});//OBS HÄR   inte brakeamount?
 
 
         turboOnButton.addActionListener(new ActionListener() {
@@ -177,3 +177,4 @@ public class CarView extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
+

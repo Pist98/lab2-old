@@ -61,25 +61,25 @@ public class Car implements Movable  {
         return enginePower * 0.01;      //Override in subclasses
     }
 
-    protected void incrementSpeed(double amount) {
-        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount, enginePower);
+    protected void incrementSpeed(double gasamount) {
+        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * gasamount, enginePower);
     }
-    private void decrementSpeed(double amount) {
-        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount, 0);
+    protected void decrementSpeed(double brakeamount) {
+        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * brakeamount, 0);
     }
 
-    public void gas(double amount) {
-        if (getCurrentSpeed() > 0 && amount >= 0 && amount <= 1) {
-            incrementSpeed(amount);
+    public void gas(double gasamount) {
+        if (getCurrentSpeed() > 0 && gasamount >= 0 && gasamount <= 1) {
+            incrementSpeed(gasamount);
             if (currentSpeed > enginePower){
                 currentSpeed = enginePower;
             }
         }
     }
 
-    public void brake(double amount) {
-        if (amount>= 0 && amount <= 1) {
-            decrementSpeed(amount);
+    public void brake(double brakeamount) {
+        if (brakeamount>= 0 && brakeamount <= 1) {
+            decrementSpeed(brakeamount);
             if (currentSpeed < 0) {
                 currentSpeed = 0;
             }

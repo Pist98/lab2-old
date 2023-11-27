@@ -31,8 +31,8 @@ public class CarController {
         cc.cars.add(new Volvo240());
         cc.cars.add(new Saab95());
         cc.cars.add(new Scania());
-        cc.cars.get(1).y = 100;
-        cc.cars.get(2).y = 200;
+        cc.cars.get(1).x = 200;
+        cc.cars.get(2).x = 400;
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc, cc.cars);
@@ -50,6 +50,7 @@ public class CarController {
                 car.move();
                 int x = (int) Math.round(car.getXPos());
                 int y = (int) Math.round(car.getYPos());
+                frame.drawPanel.repaint();
             }
         }
     }
@@ -59,15 +60,16 @@ public class CarController {
 
 
     // Calls the gas method for each car once
-    void gas(int amount) {
-        double gas = ((double) amount) / 100;
+
+    void gas(int gasamount) {
+        double gas = ((double) gasamount) / 100;
         for (Car car : cars) {
             car.gas(gas);
         }
     }
 
-    void brake(int amount) {
-        double brake = ((double) amount) / 100;
+    void brake(int brakeamount) {
+        double brake = ((double) brakeamount) / 100;
         for (Car car : cars) {
             car.brake(brake);
         }
