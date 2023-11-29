@@ -15,21 +15,24 @@ import java.util.ArrayList;
  **/
 
 public class CarView extends JFrame{
+    public ArrayList<Car> cars;
     private static final int X = 800;
-    private static final int Y = 800;
+    private static final int Y = 600;
+
+    public int getFrameX(){return X;}
 
     // The controller member
     CarController carC;
 
     DrawPanel drawPanel;
 
+
     JPanel controlPanel = new JPanel();
 
     JPanel gasPanel = new JPanel();
     JSpinner gasSpinner = new JSpinner();
-    int gasamount;  // = 0;
-    int brakeamount = gasamount;
-
+    int gasAmount = 0;
+    int breakAmount=0;
     JLabel gasLabel = new JLabel("Amount of gas");
 
     JButton gasButton = new JButton("Gas");
@@ -38,13 +41,14 @@ public class CarView extends JFrame{
     JButton turboOffButton = new JButton("Saab Turbo off");
     JButton liftBedButton = new JButton("Scania Lift Bed");
     JButton lowerBedButton = new JButton("Lower Lift Bed");
+
     JButton startButton = new JButton("Start all cars");
-    JButton stopButton = new JButton("Stop all  cars");
+    JButton stopButton = new JButton("Stop all cars");
 
     // Constructor
-    public CarView(String framename, CarController cc, ArrayList<Car> car){
+    public CarView(String framename, CarController cc, ArrayList<Car> cars){
         this.carC = cc;
-        this.drawPanel = new DrawPanel( X, Y-240, car);
+        this.drawPanel = new DrawPanel( X, Y-240, cars);
         initComponents(framename);
     }
 
@@ -58,8 +62,6 @@ public class CarView extends JFrame{
 
         this.add(drawPanel);
 
-
-
         SpinnerModel spinnerModel =
                 new SpinnerNumberModel(0, //initial value
                         0, //min
@@ -68,11 +70,14 @@ public class CarView extends JFrame{
         gasSpinner = new JSpinner(spinnerModel);
         gasSpinner.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
-                gasamount = (int) ((JSpinner)e.getSource()).getValue();
-            }
-        });
+                gasAmount = (int) ((JSpinner)e.getSource()).getValue();
+                breakAmount=gasAmount;
 
+            }});
 
+        //  gasSpinner.addChangeListener(new ChangeListener() {
+        //    public void stateChanged(ChangeEvent e) {
+        //      breakAmount = (int) ((JSpinner)e.getSource()).getValue();}});
 
 
         gasPanel.setLayout(new BorderLayout());
@@ -108,60 +113,44 @@ public class CarView extends JFrame{
         // This actionListener is for the gas button only
         // TODO: Create more for each component as necessary
 
+        brakeButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.brake(breakAmount);
+            }});
+
         gasButton.addActionListener(new ActionListener() { //Anropar gas.Amount
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.gas(gasamount);}});
-
-
-        brakeButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                carC.brake(gasamount);}});//OBS HÄR   inte brakeamount?
-
-
-        turboOnButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {;
-            carC.turboOn();
+                carC.gas(gasAmount);
             }});
-
-        turboOffButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {;
-                carC.turboOff();
-            }});
-
-
-        liftBedButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {;
-                carC.lift();
-            }});
-
-        lowerBedButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                carC.lower();
-            }
-        });
 
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                carC.start();
-            }
-        });
+                carC.startEngine();}});
 
         stopButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-            carC.stop();
-            }
-        });
+                carC.stopEngine();}});
 
-
-
+        turboOffButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.setTurboOff();}});
+        turboOnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.setTurboOn();}});
+        liftBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.liftBedButton();}});
+        lowerBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                carC.lowerBedButton();}});
 
 
         // Make the frame pack all it's components by respecting the sizes if possible.
@@ -177,4 +166,3 @@ public class CarView extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
-

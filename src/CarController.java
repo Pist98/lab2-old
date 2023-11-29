@@ -1,12 +1,15 @@
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Map;
 
 /*
-* This class represents the Controller part in the MVC pattern.
-* It's responsibilities is to listen to the View and responds in a appropriate manner by
-* modifying the model state and the updating the view.
+ * This class represents the Controller part in the MVC pattern.
+ * It's responsibilities is to listen to the View and responds in a appropriate manner by
+ * modifying the model state and the updating the view.
  */
 
 public class CarController {
@@ -27,12 +30,18 @@ public class CarController {
 
     public static void main(String[] args) {
         // Instance of this class
+        int y_change= 0;
         CarController cc = new CarController();
-        cc.cars.add(new Volvo240());
+        cc.cars.add((new Scania()));
         cc.cars.add(new Saab95());
-        cc.cars.add(new Scania());
-        cc.cars.get(1).x = 200;
-        cc.cars.get(2).x = 400;
+        cc.cars.add(new Volvo240());
+        for (int i=0; i<cc.cars.size();i+=1){
+            cc.cars.get(i).y+=y_change;
+            y_change+=100;
+
+        }
+
+
 
         // Start a new view and send a reference of self
         cc.frame = new CarView("CarSim 1.0", cc, cc.cars);
@@ -41,87 +50,69 @@ public class CarController {
         cc.timer.start();
     }
 
-    /* Each step the TimerListener moves all the cars in the list and tells the
-     * view to update its images. Change this method to your needs.
-     * */
+
     private class TimerListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-            for (Car car : cars) {
+
+            for (Map.Entry<Car,BufferedImage> entry : frame.drawPanel.CarsAndPics.entrySet()) {
+                Car car = entry.getKey();
+                BufferedImage image = entry.getValue();
+                if(car.getXPos()+ image.getWidth()> frame.getFrameX()|| car.getXPos()<0) {
+                    car.invertDierction();
+                }
                 car.move();
-                int x = (int) Math.round(car.getXPos());
-                int y = (int) Math.round(car.getYPos());
-                frame.drawPanel.repaint();
-            }
-        }
+                frame.drawPanel.repaint();                // repaint() calls the paintComponent method of the panel'
+            }}
     }
-    //frame.drawPanel.moveit(x, y);//
-    // repaint() calls the paintComponent method of the panel
-    //frame.drawPanel.repaint();
 
-
-    // Calls the gas method for each car once
-
-    void gas(int gasamount) {
-        double gas = ((double) gasamount) / 100;
+    void gas(double amount) {
+        double g = ( amount) / 100;
         for (Car car : cars) {
-            car.gas(gas);
-        }
-    }
+            car.gas(g);}}
 
-    void brake(int brakeamount) {
-        double brake = ((double) brakeamount) / 100;
+
+    void brake(double amount){
+        double brake = (amount) / 100;
         for (Car car : cars) {
             car.brake(brake);
         }
     }
-
-
-    void turboOn() {
-        for (Car car : cars) {
-            if (car instanceof Saab95) {
-                ((Saab95) car).setTurboOn();
-            }
-        }
+    void startEngine() {
+        for (Car car:cars) {
+            car.startEngine();}
     }
 
-    void turboOff() {
-        for (Car car : cars) {
-            if (car instanceof Saab95) {
-                ((Saab95) car).setTurboOff();
-            }
-        }
+    void stopEngine() {
+        for (Car car:cars){
+            car.stopEngine();}
     }
 
-    void lift() {
+
+    void setTurboOn(){
+        for (Car car : cars) {
+            if (car instanceof Saab95){
+                ((Saab95) car).setTurboOn();}}
+    }
+
+    void setTurboOff(){
+        for (Car car : cars) {
+            if (car instanceof Saab95){
+                ((Saab95) car).setTurboOff();}}
+    }
+
+
+    void liftBedButton() {//open
         for (Car car : cars) {
             if (car instanceof Scania) {
-                ((Scania) car).raise_flak(5);
-            }
-        }
+                car.raise_flak();}}
     }
 
-    void lower() {
+    void lowerBedButton() {//close
         for (Car car : cars) {
             if (car instanceof Scania) {
-                ((Scania) car).lower_flak(5);
-            }
-        }
-    }
-
-    void start() {
-        for (Car car : cars) {
-            car.startEngine();
-        }
-    }
-
-
-    void stop() {
-        for (Car car : cars) {
-            car.stopEngine();
-        }
+                car.lower_flak();}}
     }
 }
-
 
 
 

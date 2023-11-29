@@ -19,4 +19,3 @@ public class Workshop < T extends Car> {
         loaded_cars.remove(last_car);
     }
 }
-

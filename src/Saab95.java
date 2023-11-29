@@ -2,10 +2,10 @@ import java.awt.*;
 
 public class Saab95 extends CarPersonal {
 
-    private boolean turboOn; //subclass adds one more field
+    //subclass adds one more field
 
 
-    public Saab95() {
+    public Saab95(){
         nrDoors = 2;
         color = Color.red;
         enginePower = 125;
@@ -14,22 +14,19 @@ public class Saab95 extends CarPersonal {
         stopEngine();
     }
 
-    public void setTurboOn() {
+    public void setTurboOn(){
         turboOn = true;
     }
 
-    public void setTurboOff() {
+    public void setTurboOff(){
         turboOn = false;
     }
 
-    @Override
-    public double speedFactor() {
+    @Override public double speedFactor(){
         double turbo = 1;
-        if (turboOn == true) {
-            turbo = 2.0;
-            return enginePower * 0.01 * turbo;
-        }
+        if(turboOn) turbo = 1.3;
         return enginePower * 0.01 * turbo;
     }
 
 }
+
