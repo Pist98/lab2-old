@@ -18,18 +18,21 @@ public class VehicleView extends JFrame{
     private static final int X = 800;
     private static final int Y = 600;
 
+
     public int getFrameX(){return X;}
 
     // The controller member
     DrawPanel drawPanel;
+    //DefButtons defButtons;
+    //ButtonAction buttonAction;
 
 
     JPanel controlPanel = new JPanel();
 
     JPanel gasPanel = new JPanel();
     JSpinner gasSpinner = new JSpinner();
-    int gasAmount = 0;
-    int breakAmount=0;
+    //int gasAmount = 0;
+    //int breakAmount=0;
     JLabel gasLabel = new JLabel("Amount of gas");
 
     JButton gasButton = new JButton("Gas");
@@ -38,17 +41,18 @@ public class VehicleView extends JFrame{
     JButton turboOffButton = new JButton("Saab Turbo off");
     JButton liftBedButton = new JButton("Scania Lift Bed");
     JButton lowerBedButton = new JButton("Lower Lift Bed");
-
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
 
+
     // Constructor
-   /*
     public VehicleView(String framename, ArrayList<Vehicle> vehicles){
         this.drawPanel = new DrawPanel( X, Y-240, vehicles);
-        this.defButtons = new DefButtons(vehicles);
+        //this.buttonAction= new ButtonAction(vehicles);
         initComponents(framename);
     }
+
+
 
     // Sets everything in place and fits everything
     // TODO: Take a good look and make sure you understand how these methods and components work
@@ -57,7 +61,6 @@ public class VehicleView extends JFrame{
         this.setTitle(title);
         this.setPreferredSize(new Dimension(X,Y));
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
-
         this.add(drawPanel);
 
         SpinnerModel spinnerModel =
@@ -111,6 +114,48 @@ public class VehicleView extends JFrame{
         // This actionListener is for the gas button only
         // TODO: Create more for each component as necessary
 
+////////////////////////////////////////////----------------------////////////////////////////// actionButtons
+     /*   brakeButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                defButtons.brake(breakAmount);
+            }});
+
+        gasButton.addActionListener(new ActionListener() { //Anropar gas.Amount
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                defButtons.gas(gasAmount);
+            }});
+
+        startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                defButtons.startEngine();}});
+
+        stopButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                defButtons.stopEngine();}});
+
+        turboOffButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                defButtons.setTurboOff();}});
+        turboOnButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                defButtons.setTurboOn();}});
+        liftBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                defButtons.liftBedButton();}});
+        lowerBedButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                defButtons.lowerBedButton();}});
+
+      */
+///////////////////////////////////////////////////////////////////////////////////////////
 
 
 
