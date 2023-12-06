@@ -10,9 +10,9 @@ public class DefButtons{
 
 
     void gas(double amount) {
-        double g = ( amount) / 100;
+        double gas = ( amount) / 100;
         for (Vehicle vehicle : vehicles) {
-            vehicle.gas(g);}}
+            vehicle.gas(gas);}}
 
 
     void brake(double amount){
