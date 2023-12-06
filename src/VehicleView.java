@@ -6,33 +6,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-/**
- * This class represents the full view of the MVC pattern of your car simulator.
- * It initializes with being center on the screen and attaching it's controller in it's state.
- * It communicates with the Controller by calling methods of it when an action fires of in
- * each of it's components.
- * TODO: Write more actionListeners and wire the rest of the buttons
- **/
-
 public class VehicleView extends JFrame{
+    public ArrayList<Vehicle> vehicles;
     private static final int X = 800;
     private static final int Y = 600;
-
 
     public int getFrameX(){return X;}
 
     // The controller member
+    VehicleController carC;
+
     DrawPanel drawPanel;
-    //DefButtons defButtons;
-    //ButtonAction buttonAction;
 
 
     JPanel controlPanel = new JPanel();
 
     JPanel gasPanel = new JPanel();
     JSpinner gasSpinner = new JSpinner();
-    //int gasAmount = 0;
-    //int breakAmount=0;
+    int gasAmount ;
+    int breakAmount;
     JLabel gasLabel = new JLabel("Amount of gas");
 
     JButton gasButton = new JButton("Gas");
@@ -41,18 +33,17 @@ public class VehicleView extends JFrame{
     JButton turboOffButton = new JButton("Saab Turbo off");
     JButton liftBedButton = new JButton("Scania Lift Bed");
     JButton lowerBedButton = new JButton("Lower Lift Bed");
+
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
 
-
     // Constructor
-    public VehicleView(String framename, ArrayList<Vehicle> vehicles){
+    public VehicleView(String framename, VehicleController cc, ArrayList<Vehicle> vehicles){
+        this.vehicles=vehicles;
+        this.carC = cc;
         this.drawPanel = new DrawPanel( X, Y-240, vehicles);
-        //this.buttonAction= new ButtonAction(vehicles);
         initComponents(framename);
     }
-
-
 
     // Sets everything in place and fits everything
     // TODO: Take a good look and make sure you understand how these methods and components work
@@ -61,8 +52,25 @@ public class VehicleView extends JFrame{
         this.setTitle(title);
         this.setPreferredSize(new Dimension(X,Y));
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
+
         this.add(drawPanel);
 
+        SpinnerModel spinnerModel =
+                new SpinnerNumberModel(0, //initial value
+                        0, //min
+                        100, //max
+                        1);//step
+        gasSpinner = new JSpinner(spinnerModel);
+        gasSpinner.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                gasAmount = (int) ((JSpinner)e.getSource()).getValue();
+                breakAmount=gasAmount;
+
+            }});
+
+        //  gasSpinner.addChangeListener(new ChangeListener() {
+        //    public void stateChanged(ChangeEvent e) {
+        //      breakAmount = (int) ((JSpinner)e.getSource()).getValue();}});
 
 
         gasPanel.setLayout(new BorderLayout());
@@ -98,49 +106,44 @@ public class VehicleView extends JFrame{
         // This actionListener is for the gas button only
         // TODO: Create more for each component as necessary
 
-////////////////////////////////////////////----------------------////////////////////////////// actionButtons
-     /*   brakeButton.addActionListener(new ActionListener(){
+        brakeButton.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e) {
-                defButtons.brake(breakAmount);
+                carC.brake(breakAmount);
             }});
 
         gasButton.addActionListener(new ActionListener() { //Anropar gas.Amount
             @Override
             public void actionPerformed(ActionEvent e) {
-                defButtons.gas(gasAmount);
+                carC.gas(gasAmount);
             }});
 
         startButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                defButtons.startEngine();}});
+                carC.startEngine();}});
 
         stopButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                defButtons.stopEngine();}});
+                carC.stopEngine();}});
 
         turboOffButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                defButtons.setTurboOff();}});
+                carC.setTurboOff();}});
         turboOnButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                defButtons.setTurboOn();}});
+                carC.setTurboOn();}});
         liftBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                defButtons.liftBedButton();}});
+                carC.liftBedButton();}});
         lowerBedButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                defButtons.lowerBedButton();}});
-
-      */
-///////////////////////////////////////////////////////////////////////////////////////////
-
+                carC.lowerBedButton();}});
 
 
         // Make the frame pack all it's components by respecting the sizes if possible.
@@ -158,20 +161,5 @@ public class VehicleView extends JFrame{
 }
 
 
-////////////////////////////////////////--------------///////////////////////  FLYTTAS TIL CC
-        /*SpinnerModel spinnerModel =
-                new SpinnerNumberModel(0, //initial value
-                        0, //min
-                        100, //max
-                        1);//step
-        gasSpinner = new JSpinner(spinnerModel);
 
-        gasSpinner.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent e) {
-                gasAmount = (int) ((JSpinner)e.getSource()).getValue();
-                breakAmount=gasAmount;
 
-            }});
-
-         */
-//////////////////////////////////////////////////////////////////////////////////////////////////////
