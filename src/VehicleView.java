@@ -18,11 +18,12 @@ public class VehicleView extends JFrame{
     public int getFrameX(){return X;}
 
     // The controller member
-    VehicleController carC;
+    //VehicleController carC;
 
     DrawPanel drawPanel;
 
 
+/*
     JPanel controlPanel = new JPanel();
 
     JPanel gasPanel = new JPanel();
@@ -40,11 +41,11 @@ public class VehicleView extends JFrame{
 
     JButton startButton = new JButton("Start all cars");
     JButton stopButton = new JButton("Stop all cars");
-
+*/
     // Constructor
     public VehicleView(String framename, VehicleController cc, ArrayList<Vehicle> vehicles){
         this.vehicles=vehicles;
-        this.carC = cc;
+        //this.carC = cc;
         this.drawPanel = new DrawPanel( X, Y-240, vehicles);
         initComponents(framename);
     }
