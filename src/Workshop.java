@@ -3,19 +3,19 @@ import java.util.ArrayList;
 public class Workshop < T extends Car> {
 
     int max=8;
-    ArrayList<Car> loaded_cars = new ArrayList <>();
-    ArrayList<Car> unloaded_car = new ArrayList <>();
+    ArrayList<Car> loaded_vehicles = new ArrayList <>();
+    ArrayList<Car> unloaded_vehicle = new ArrayList <>();
 
 
 
-    public void load(Car car) {
-        if (loaded_cars.size() < max) {
-            loaded_cars.add(car);}
+    public void load(Car vehicle) {
+        if (loaded_vehicles.size() < max) {
+            loaded_vehicles.add(vehicle);}
     }
 
     public void unload(){
-        int last_car= loaded_cars.size() -1;
-        unloaded_car.add(loaded_cars.remove(last_car));
-        loaded_cars.remove(last_car);
+        int last_car= loaded_vehicles.size() -1;
+        unloaded_vehicle.add(loaded_vehicles.remove(last_car));
+        loaded_vehicles.remove(last_car);
     }
 }

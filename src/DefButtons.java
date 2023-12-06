@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class DefButtons {
+public class DefButtons{
 
     public ArrayList<Vehicle> vehicles;
 

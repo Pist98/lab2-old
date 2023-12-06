@@ -63,22 +63,6 @@ public class VehicleView extends JFrame{
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
         this.add(drawPanel);
 
-        SpinnerModel spinnerModel =
-                new SpinnerNumberModel(0, //initial value
-                        0, //min
-                        100, //max
-                        1);//step
-        gasSpinner = new JSpinner(spinnerModel);
-        gasSpinner.addChangeListener(new ChangeListener() {
-            public void stateChanged(ChangeEvent e) {
-                gasAmount = (int) ((JSpinner)e.getSource()).getValue();
-                breakAmount=gasAmount;
-
-            }});
-
-        //  gasSpinner.addChangeListener(new ChangeListener() {
-        //    public void stateChanged(ChangeEvent e) {
-        //      breakAmount = (int) ((JSpinner)e.getSource()).getValue();}});
 
 
         gasPanel.setLayout(new BorderLayout());
@@ -172,3 +156,22 @@ public class VehicleView extends JFrame{
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
+
+
+////////////////////////////////////////--------------///////////////////////  FLYTTAS TIL CC
+        /*SpinnerModel spinnerModel =
+                new SpinnerNumberModel(0, //initial value
+                        0, //min
+                        100, //max
+                        1);//step
+        gasSpinner = new JSpinner(spinnerModel);
+
+        gasSpinner.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                gasAmount = (int) ((JSpinner)e.getSource()).getValue();
+                breakAmount=gasAmount;
+
+            }});
+
+         */
+//////////////////////////////////////////////////////////////////////////////////////////////////////

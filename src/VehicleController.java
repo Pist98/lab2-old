@@ -12,10 +12,10 @@ import java.util.ArrayList;
 public class VehicleController {
 
     // The delay (ms) corresponds to 20 updates a sec (hz)
-    private final int delay = 50;
     // The timer is started with an listener (see below) that executes the statements
     // each step between delays.
-    private Timer timer = new Timer(delay, new TimerListener());
+    //private final int delay = 50;
+    //private Timer timer = new Timer(delay, new TimerListener());
 
     // The frame that represents this instance View of the MVC pattern
     VehicleView frame;
@@ -35,6 +35,7 @@ public class VehicleController {
 
     public static void main(String[] args) {
         // Instance of this class
+
         int y_change= 0;
         VehicleController cc = new VehicleController();
         cc.vehicles.add((new Scania()));

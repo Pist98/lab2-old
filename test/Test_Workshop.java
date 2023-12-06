@@ -15,8 +15,8 @@ public class Test_Workshop {
         workshop.load(saab1);
         workshop.load(volvo2);
         workshop.load(saab2);
-        System.out.println(workshop.loaded_cars);
-        assertTrue(workshop.loaded_cars.size()==3);
+        System.out.println(workshop.loaded_vehicles);
+        assertTrue(workshop.loaded_vehicles.size()==3);
     }
 
     public void load_on_cars() {
@@ -24,39 +24,39 @@ public class Test_Workshop {
         workshop.load(saab1);
         workshop.load(volvo2);
         workshop.load(saab2);
-        System.out.println(workshop.loaded_cars);
-        assertTrue(workshop.loaded_cars.size()==2);
+        System.out.println(workshop.loaded_vehicles);
+        assertTrue(workshop.loaded_vehicles.size()==2);
     }
 
     public void load_on_cars_all() {
-        Workshop<Car> workshop = new Workshop<Car>();
+        Workshop<Vehicle> workshop = new Workshop<Vehicle>();
         workshop.load(saab1);
         workshop.load(volvo2);
         workshop.load(saab2);
-        System.out.println(workshop.loaded_cars);
-        assertTrue(workshop.loaded_cars.size()==3);
+        System.out.println(workshop.loaded_vehicles);
+        assertTrue(workshop.loaded_vehicles.size()==3);
     }
 
 
     @Test
     public void unload_on_cars() {
-        Workshop<Car> car_workshop = new Workshop<Car>();
+        Workshop<Vehicle> car_workshop = new Workshop<Vehicle>();
         car_workshop.load(volvo1);
         car_workshop.load(saab1);
         car_workshop.unload();
 
-        assertTrue(car_workshop.loaded_cars.size()==1);
+        assertTrue(car_workshop.loaded_vehicles.size()==1);
     }
     @Test
     public void check_unloaded_cars() {
-        Workshop<Car> workshop = new Workshop<Car>();
+        Workshop<Vehicle> workshop = new Workshop<Vehicle>();
         workshop.load(volvo1);
         workshop.load(saab1);
-        Car last_car= workshop.loaded_cars.get(1);
+        Vehicle last_vehicle = workshop.loaded_vehicles.get(1);
         workshop.unload();
-        System.out.println(workshop.unloaded_car);
+        System.out.println(workshop.unloaded_vehicle);
 
-        assertTrue(last_car== workshop.unloaded_car.get(0));
+        assertTrue(last_vehicle == workshop.unloaded_vehicle.get(0));
     }
 
     @Test
@@ -65,7 +65,7 @@ public class Test_Workshop {
         for (int i = 0; i < 15; i++) {
             workshop.load(saab2);
         }
-        assertTrue(workshop.loaded_cars.size()==8);
+        assertTrue(workshop.loaded_vehicles.size()==8);
     }
 
 

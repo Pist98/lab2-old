@@ -2,13 +2,13 @@
 import java.awt.*;
 import java.util.ArrayList;
 
-public class MANTGX440 extends Car {
+public class MANTGX440 extends Truck {
 
     int max_load;
     boolean flak;
 
 
-    ArrayList<Car> loaded_cars =new ArrayList<Car>();
+    ArrayList<Vehicle> loaded_vehicles =new ArrayList<Vehicle>();
 
 
     public MANTGX440() {
@@ -24,13 +24,13 @@ public class MANTGX440 extends Car {
     }
 
 
-    public void load(Car car) {
-        if (loaded_cars.size() < 8 && (car.getXPos()==getXPos())) {
-            loaded_cars.add(car);}
+    public void load(Vehicle vehicle) {
+        if (loaded_vehicles.size() < 8 && (vehicle.getXPos()==getXPos())) {
+            loaded_vehicles.add(vehicle);}
     }
     public void unload(){
-        int last_car= loaded_cars.size() -1;
-        loaded_cars.remove(last_car);
+        int last_car= loaded_vehicles.size() -1;
+        loaded_vehicles.remove(last_car);
     }
 
     @Override public void move(){
@@ -41,9 +41,9 @@ public class MANTGX440 extends Car {
         else {
             x = x + currentSpeed * (int)Math.cos(Math.toRadians(direction));
             y = y + currentSpeed * (int)Math.sin(Math.toRadians(direction));
-            for (Car car :loaded_cars){
-                car.x=x;
-                car.y=y;
+            for (Vehicle vehicle : loaded_vehicles){
+                vehicle.x=x;
+                vehicle.y=y;
             }
         }}
 

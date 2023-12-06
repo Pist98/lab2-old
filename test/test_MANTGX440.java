@@ -1,8 +1,5 @@
 import org.junit.Test;
 
-import javax.swing.table.DefaultTableCellRenderer;
-import java.util.Arrays;
-
 import static org.junit.Assert.assertTrue;
 //Skriva ett test för att kolla falk
 public class test_MANTGX440 {
@@ -28,7 +25,7 @@ public class test_MANTGX440 {
         truck.load(volvo1);
         truck.load(volvo2);
         truck.unload();
-        assertTrue(truck.loaded_cars.size()==1);
+        assertTrue(truck.loaded_vehicles.size()==1);
     }
     @Test
     public void Check_pos_for_the_loaded_cars() {

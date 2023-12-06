@@ -1,6 +1,6 @@
 import java.awt.*;
 
-public class Saab95 extends CarPersonal {
+public class Saab95 extends Car {
 
     //subclass adds one more field
 
