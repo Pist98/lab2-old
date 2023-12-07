@@ -45,7 +45,6 @@ public class DrawPanel extends JPanel{
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         setListForPics();
-
         for (Map.Entry<Vehicle,BufferedImage> entry : CarsAndPics.entrySet()) {
             Vehicle vehicle = entry.getKey();
             BufferedImage image = entry.getValue();

@@ -23,7 +23,7 @@ public class VehicleView extends JFrame{
 
 
     // Constructor
-    public VehicleView(String framename, VehicleController cc, ArrayList<Vehicle> vehicles){
+    public VehicleView(String framename, ArrayList<Vehicle> vehicles){
         this.vehicles=vehicles;
         //this.carC = cc;
         this.drawPanel = new DrawPanel( X, Y-240, vehicles);
@@ -52,7 +52,6 @@ public class VehicleView extends JFrame{
         // Make sure the frame exits when "x" is pressed
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-
 
 }
 
