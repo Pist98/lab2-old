@@ -5,7 +5,7 @@ public class Scania extends Truck {
     public Scania(int x, int y){
         nrDoors = 2;
         color = Color.white;
-        enginePower = 300;
+        enginePower = 530;
         modelName = "Scania";
         flak=true;
         maxVinkel=70;
@@ -14,6 +14,7 @@ public class Scania extends Truck {
         this.x = x;
         this.y = y;
     }
+
 
 }
 
