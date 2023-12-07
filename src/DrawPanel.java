@@ -3,6 +3,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -13,7 +14,7 @@ public class DrawPanel extends JPanel{
 
     protected ArrayList<Vehicle> vehicles;
     protected ArrayList<BufferedImage> Image= new ArrayList<>();
-    protected Map<Vehicle, BufferedImage> CarsAndPics = new HashMap<>();
+    protected Map<Vehicle, BufferedImage> CarsAndPics = new LinkedHashMap<>();
 
 
     protected void setListForPics(){

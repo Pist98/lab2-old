@@ -5,13 +5,15 @@ public class Saab95 extends Car {
     //subclass adds one more field
 
 
-    public Saab95(){
+    public Saab95(int x, int y){
         nrDoors = 2;
         color = Color.red;
         enginePower = 125;
         turboOn = false;
         modelName = "Saab95";
         stopEngine();
+        this.x = x;
+        this.y = y;
     }
 
     public void setTurboOn(){
