@@ -22,25 +22,6 @@ public class VehicleView extends JFrame{
     DrawPanel drawPanel;
 
 
-/*
-    JPanel controlPanel = new JPanel();
-
-    JPanel gasPanel = new JPanel();
-    JSpinner gasSpinner = new JSpinner();
-    int gasAmount ;
-    int breakAmount;
-    JLabel gasLabel = new JLabel("Amount of gas");
-
-    JButton gasButton = new JButton("Gas");
-    JButton brakeButton = new JButton("Brake");
-    JButton turboOnButton = new JButton("Saab Turbo on");
-    JButton turboOffButton = new JButton("Saab Turbo off");
-    JButton liftBedButton = new JButton("Scania Lift Bed");
-    JButton lowerBedButton = new JButton("Lower Lift Bed");
-
-    JButton startButton = new JButton("Start all cars");
-    JButton stopButton = new JButton("Stop all cars");
-*/
     // Constructor
     public VehicleView(String framename, VehicleController cc, ArrayList<Vehicle> vehicles){
         this.vehicles=vehicles;
@@ -54,7 +35,7 @@ public class VehicleView extends JFrame{
     private void initComponents(String title) {
 
         this.setTitle(title);
-        this.setPreferredSize(new Dimension(X,Y));
+        this.setPreferredSize(new Dimension(X, Y));
         this.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
 
         this.add(drawPanel);
