@@ -87,7 +87,7 @@ public class Vehicle implements Movable {
 
 
 
-    public void gas(double amount) {
+    protected void gas(double amount) {
         if (amount >= 0 && amount <= 1) {
             incrementSpeed(amount);
             if (currentSpeed > enginePower){
@@ -99,7 +99,7 @@ public class Vehicle implements Movable {
         x = x + currentSpeed * (int)Math.sin(Math.toRadians(direction));
         y = y + currentSpeed * (int)Math.cos(Math.toRadians(direction));
     }
-    public void startEngine() {
+    protected void startEngine() {
         currentSpeed = 0.1;
     }
     protected void invertDierction(){
