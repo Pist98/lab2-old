@@ -24,23 +24,23 @@ public class Vehicle implements Movable {
         return nrDoors;
     }
 
-    public double getEnginePower() {
+    protected double getEnginePower() {
         return enginePower;
     }
 
-    public double getCurrentSpeed() {
+    protected double getCurrentSpeed() {
         return currentSpeed;
     }
 
-    public double get_vinkel() {
+    protected double get_vinkel() {
         return vinkel;
     }
 
-    public Color getColor() {
+    protected Color getColor() {
         return color;
     }
 
-    public void setColor(Color clr) {
+    protected void setColor(Color clr) {
         color = clr;
     }
 
