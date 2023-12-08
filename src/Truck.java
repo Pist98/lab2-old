@@ -33,13 +33,13 @@ public class Truck extends Vehicle {
         }}
 
 
-    public void check_flak() {
+    protected void check_flak() {
         if (get_vinkel()>0) {flak=true;}
         else {flak=false;}
 
     }
 
-    public void raise_flak(){
+    protected void raise_flak(){
         if (getCurrentSpeed()==0){
             vinkel += changeVinkel;
             flak=true;
@@ -47,7 +47,7 @@ public class Truck extends Vehicle {
         }
     }
 
-    public void lower_flak(){
+    protected void lower_flak(){
         if (getCurrentSpeed()==0){
             vinkel -= changeVinkel;
             flak=true;

@@ -2,7 +2,7 @@ import java.awt.*;
 
 public class Scania extends Truck {
 
-    public Scania(int x, int y){
+  protected Scania(int x, int y){
         nrDoors = 2;
         color = Color.white;
         enginePower = 530;

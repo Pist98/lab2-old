@@ -3,7 +3,7 @@ import java.awt.*;
 public class Volvo240 extends Car {
     private final static double trimFactor = 1.25;  // subclass adds one more field
 
-    public Volvo240(int x, int y) {
+    protected Volvo240(int x, int y) {
         nrDoors = 4;
         color = Color.black;
         enginePower = 100;
@@ -14,7 +14,7 @@ public class Volvo240 extends Car {
     }
 
     @Override
-    public double speedFactor() {
+    protected double speedFactor() {
         return enginePower * 0.01 * trimFactor;
     }
 

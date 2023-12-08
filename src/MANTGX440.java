@@ -11,7 +11,7 @@ public class MANTGX440 extends Truck {
     ArrayList<Vehicle> loaded_vehicles =new ArrayList<Vehicle>();
 
 
-    public MANTGX440() {
+    protected MANTGX440() {
         nrDoors = 2;
         color = Color.black;
         enginePower = 530;
@@ -24,11 +24,11 @@ public class MANTGX440 extends Truck {
     }
 
 
-    public void load(Vehicle vehicle) {
+    protected void load(Vehicle vehicle) {
         if (loaded_vehicles.size() < 8 && (vehicle.getXPos()==getXPos())) {
             loaded_vehicles.add(vehicle);}
     }
-    public void unload(){
+    protected void unload(){
         int last_car= loaded_vehicles.size() -1;
         loaded_vehicles.remove(last_car);
     }
